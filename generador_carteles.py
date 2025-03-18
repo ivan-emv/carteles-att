@@ -20,7 +20,7 @@ def obtener_dia_semana(fecha, idiomas):
 
 def generar_cartel(ciudad, fecha, actividad, hora_encuentro, punto_encuentro, nombre_guia, idiomas):
     # Cargar el archivo base
-    doc_path = "/mnt/data/CARTEL EMV ATT.docx"
+    doc_path = "CARTEL EMV ATT.docx"
     if not os.path.exists(doc_path):
         return "Error: No se encuentra el archivo base. Asegúrate de que 'CARTEL EMV ATT.docx' está en el directorio."
     

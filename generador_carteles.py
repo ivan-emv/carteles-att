@@ -31,7 +31,7 @@ def generar_cartel(ciudad, fecha, actividad, hora_encuentro, punto_encuentro, no
     traducciones = {
         "Español": {"Bienvenidos": "¡Bienvenidos!", "Guía": "GUÍA", "Actividad": "Actividad", "Salida": "Salida", "PuntodeEncuentro": "Punto de Encuentro", "HoradeEncuentro": "Hora de Encuentro"},
         "Portugués": {"Bienvenidos": "Bem-Vindos!", "Guía": "GUIA", "Actividad": "Atividade", "Salida": "Saída", "PuntodeEncuentro": "Ponto de Encontro", "HoradeEncuentro": "Hora de Encontro"},
-        "Inglés": {"Bienvenidos": "Welcome!", "Guía": "GUIDE", "Actividad": "Activity", "Salida": "Departure", "PuntodeEncuentro": "Meeting Point", "HoradeEncuentro": "Meeting Hour"}
+        "Inglés": {"Bienvenidos": "Welcome!", "Guía": "GUIDE", "Actividad": "Activity", "Salida": "Departure", "PuntodeEncuentro": "Meeting Point", "HoradeEncuentro": "Departure Hour"}
     }
     
     textos_traducidos = [traducciones.get(idioma, traducciones["Español"]) for idioma in idiomas]

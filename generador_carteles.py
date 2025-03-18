@@ -29,8 +29,8 @@ def generar_cartel(ciudad, fecha, actividad, hora_encuentro, punto_encuentro, no
     fecha_formateada = obtener_dia_semana(fecha, idiomas)
     
     traducciones = {
-        "Español": {"Bienvenidos": "¡Bienvenidos!", "Guía": "GUÍA", "Actividad": "Actividad", "Salida": "Salida", "PuntodeEncuentro": "Punto de Encuentro", "HoradeEncuentro": "Hora de Encuentro"},
-        "Portugués": {"Bienvenidos": "Bem-Vindos!", "Guía": "GUIA", "Actividad": "Atividade", "Salida": "Saída", "PuntodeEncuentro": "Ponto de Encontro", "HoradeEncuentro": "Hora de Encontro"},
+        "Español": {"Bienvenidos": "¡Bienvenidos!", "Guía": "GUÍA", "Actividad": "Actividad", "Salida": "Salida", "PuntodeEncuentro": "Punto de Encuentro", "HoradeEncuentro": "Hora de Salida"},
+        "Portugués": {"Bienvenidos": "Bem-Vindos!", "Guía": "GUIA", "Actividad": "Atividade", "Salida": "Saída", "PuntodeEncuentro": "Ponto de Encontro", "HoradeEncuentro": "Hora de Saída"},
         "Inglés": {"Bienvenidos": "Welcome!", "Guía": "GUIDE", "Actividad": "Activity", "Salida": "Departure", "PuntodeEncuentro": "Meeting Point", "HoradeEncuentro": "Departure Hour"}
     }
     
@@ -95,12 +95,12 @@ idiomas_seleccionados = st.multiselect("Seleccione los idiomas:", idiomas_dispon
 if len(idiomas_seleccionados) == 0:
     st.warning("Debe seleccionar al menos un idioma para generar el cartel.")
 else:
-    ciudad = st.text_input("Ingrese la ciudad:")
-    fecha = st.text_input("Ingrese la fecha (dd/mm/aaaa):")
+    ciudad = st.text_input("Ingrese la Ciudad:")
+    fecha = st.text_input("Ingrese la Fecha (dd/mm/aaaa):")
     actividad = st.text_input("Ingrese el nombre de la actividad principal:")
-    hora_encuentro = st.text_input("Ingrese la hora de encuentro:")
-    punto_encuentro = st.text_input("Ingrese el punto de encuentro:")
-    nombre_guia = st.text_input("Ingrese el nombre del guía:")
+    hora_encuentro = st.text_input("Ingrese la Hora de Salida:")
+    punto_encuentro = st.text_input("Ingrese el Punto de Encuentro:")
+    nombre_guia = st.text_input("Ingrese el Nombre del Guía:")
 
     if st.button("Generar Cartel"):
         archivo_generado = generar_cartel(ciudad, fecha, actividad, hora_encuentro, punto_encuentro, nombre_guia, idiomas_seleccionados)

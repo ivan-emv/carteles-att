@@ -87,7 +87,7 @@ def generar_cartel(ciudad, fecha, actividad, hora_encuentro, punto_encuentro, no
     doc.save(output_path)
     return output_path
 
-st.title("Generador de Carteles para Pasajeros")
+st.title("Generador de Carteles - ATT Cliente")
 
 idiomas_disponibles = ["Español", "Portugués", "Inglés"]
 idiomas_seleccionados = st.multiselect("Seleccione los idiomas:", idiomas_disponibles, default=["Español"])

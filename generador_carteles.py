@@ -4,6 +4,7 @@ from docx.shared import Pt, RGBColor
 from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
 from datetime import datetime
 import os
+import tempfile
 
 def obtener_dia_semana(fecha, idiomas):
     dias = {
@@ -18,13 +19,16 @@ def obtener_dia_semana(fecha, idiomas):
     except ValueError:
         return "Día inválido"
 
-def generar_cartel(ciudad, fecha, actividad, hora_encuentro, punto_encuentro, nombre_guia, idiomas):
-    # Cargar el archivo base
-    doc_path = "/mnt/data/CARTEL EMV ATT.docx"
-    if not os.path.exists(doc_path):
-        return "Error: No se encuentra el archivo base. Asegúrate de que 'CARTEL EMV ATT.docx' está en el directorio."
+def generar_cartel(ciudad, fecha, actividad, hora_encuentro, punto_encuentro, nombre_guia, idiomas, archivo):
+    # Guardar el archivo cargado en un directorio temporal
+    with tempfile.NamedTemporaryFile(delete=False, suffix=".docx") as tmp_file:
+        tmp_file.write(archivo.getvalue())
+        tmp_file_path = tmp_file.name
+
+    if not os.path.exists(tmp_file_path):
+        return "Error: No se encuentra el archivo base. Asegúrate de que el archivo está cargado correctamente."
     
-    doc = Document(doc_path)
+    doc = Document(tmp_file_path)
     
     fecha_formateada = obtener_dia_semana(fecha, idiomas)
     
@@ -92,8 +96,12 @@ st.title("Generador de Carteles para Pasajeros")
 idiomas_disponibles = ["Español", "Portugués", "Inglés"]
 idiomas_seleccionados = st.multiselect("Seleccione los idiomas:", idiomas_disponibles, default=["Español"])
 
+archivo = st.file_uploader("Cargue el archivo base", type=["docx"])
+
 if len(idiomas_seleccionados) == 0:
     st.warning("Debe seleccionar al menos un idioma para generar el cartel.")
+elif archivo is None:
+    st.warning("Debe cargar el archivo base.")
 else:
     ciudad = st.text_input("Ingrese la ciudad:")
     fecha = st.text_input("Ingrese la fecha (dd/mm/aaaa):")
@@ -103,7 +111,7 @@ else:
     nombre_guia = st.text_input("Ingrese el nombre del guía:")
 
     if st.button("Generar Cartel"):
-        archivo_generado = generar_cartel(ciudad, fecha, actividad, hora_encuentro, punto_encuentro, nombre_guia, idiomas_seleccionados)
+        archivo_generado = generar_cartel(ciudad, fecha, actividad, hora_encuentro, punto_encuentro, nombre_guia, idiomas_seleccionados, archivo)
         if archivo_generado.startswith("Error"):
             st.error(archivo_generado)
         else:

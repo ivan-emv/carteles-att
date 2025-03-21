@@ -18,7 +18,18 @@ def obtener_dia_semana(fecha, idiomas):
     except ValueError:
         return "Día inválido"
 
+def sanitizar_nombre_archivo(nombre):
+    return nombre.replace("/", "-")
+
 def generar_cartel(ciudad, fecha, actividad, hora_encuentro, punto_encuentro, nombre_guia, idiomas):
+    # Sanitizar entradas
+    ciudad = sanitizar_nombre_archivo(ciudad)
+    fecha = sanitizar_nombre_archivo(fecha)
+    actividad = sanitizar_nombre_archivo(actividad)
+    hora_encuentro = sanitizar_nombre_archivo(hora_encuentro)
+    punto_encuentro = sanitizar_nombre_archivo(punto_encuentro)
+    nombre_guia = sanitizar_nombre_archivo(nombre_guia)
+    
     # Cargar el archivo base
     doc_path = "CARTEL EMV ATT.docx"
     if not os.path.exists(doc_path):
@@ -50,7 +61,6 @@ def generar_cartel(ciudad, fecha, actividad, hora_encuentro, punto_encuentro, no
         "⏰": f"⏰ {hora_de_encuentro}: {hora_encuentro}\n",
         "🧑‍💼": f"🧑‍💼 {guia_traducido}: {nombre_guia}\n",
         "📍": f"📍 {punto_de_encuentro}: {punto_encuentro}\n",
-
     }
     
     for p in doc.paragraphs:

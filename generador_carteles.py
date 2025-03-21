@@ -19,12 +19,11 @@ def obtener_dia_semana(fecha, idiomas):
         return "Día inválido"
 
 def sanitizar_nombre_archivo(nombre):
-    return nombre.replace("/", "-")
+    return nombre.replace("/", " - ")
 
 def generar_cartel(ciudad, fecha, actividad, hora_encuentro, punto_encuentro, nombre_guia, idiomas):
-    # Sanitizar entradas
+    # Sanitizar entradas excepto la fecha
     ciudad = sanitizar_nombre_archivo(ciudad)
-    fecha = sanitizar_nombre_archivo(fecha)
     actividad = sanitizar_nombre_archivo(actividad)
     hora_encuentro = sanitizar_nombre_archivo(hora_encuentro)
     punto_encuentro = sanitizar_nombre_archivo(punto_encuentro)

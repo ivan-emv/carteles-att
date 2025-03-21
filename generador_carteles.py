@@ -38,7 +38,7 @@ def generar_cartel(ciudad, fecha, actividad, hora_encuentro, punto_encuentro, no
     
     bienvenida = " / ".join([texto['Bienvenidos'] for texto in textos_traducidos])
     guia_traducido = " / ".join([texto['Guía'] for texto in textos_traducidos])
-    actividad_traducida = " / ".join([texto['Actividad'] for texto in textos_traducidos]) + f":\n - {actividad}"
+    actividad_traducida = " / ".join([texto['Actividad'] for texto in textos_traducidos]) + f":\n{actividad}"
     punto_de_encuentro = " / ".join([texto['PuntodeEncuentro'] for texto in textos_traducidos])
     hora_de_encuentro = " / ".join([texto['HoradeEncuentro'] for texto in textos_traducidos])
     

@@ -99,6 +99,16 @@ def generar_cartel(ciudad, fecha, actividad, hora_encuentro, punto_encuentro, no
 
 st.title("Generador de Carteles - ATT Cliente")
 
+# 🔧 Ocultar la barra superior y el menú de Streamlit
+hide_streamlit_style = """
+    <style>
+        #MainMenu {visibility: hidden;}
+        header {visibility: hidden;}
+        footer {visibility: hidden;}
+    </style>
+"""
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
 idiomas_disponibles = ["Español", "Portugués", "Inglés"]
 idiomas_seleccionados = st.multiselect("Seleccione los idiomas:", idiomas_disponibles, default=["Español"])
 

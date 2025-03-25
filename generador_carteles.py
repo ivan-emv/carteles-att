@@ -99,9 +99,6 @@ def generar_cartel(ciudad, fecha, actividad, hora_encuentro, punto_encuentro, no
 
 st.title("Generador de Carteles - ATT Cliente")
 
-# ✅ Configuración de la página
-st.set_page_config(page_title="Generador de Carteles - ATT Cliente", layout="wide")
-
 # 🔧 Ocultar la barra superior y el menú de Streamlit
 hide_streamlit_style = """
     <style>
